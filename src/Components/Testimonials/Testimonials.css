@@ -45,21 +45,21 @@
   top: 2rem;
 }
 
-.right-t > :nth-child(1) {
+.one {
   position: absolute;
   width: 17rem;
   height: 20rem;
-  background-color: transparent;
-  border-color: orange;
+  background: transparent;
+  border: 2px solid orange;
   right: 9rem;
   top: 0.9rem;
 }
 
-.right-t > :nth-child(2) {
+.two {
   position: absolute;
   width: 17rem;
   height: 19rem;
-  background-color: var(--planCard);
+  background: var(--planCard);
   right: 7rem;
   top: 4rem;
 }
@@ -70,4 +70,9 @@
   position: absolute;
   bottom: 1rem;
   left: 3rem;
+}
+
+.Arrows > img {
+  width: 1.5rem;
+  cursor: pointer;
 }

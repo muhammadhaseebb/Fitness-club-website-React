@@ -1,8 +1,5 @@
 import React from "react";
 import "./Testimonials.css";
-// import image1 from "../../assets/t-image1.png";
-// import image2 from "../../assets/t-image2.jpg";
-// import image3 from "../../assets/t-image3.jpg";
 import { testimonialsData } from "../../data/testimonialsData";
 import { useState } from "react";
 
@@ -23,16 +20,32 @@ const Testimonials = () => {
           <span style={{ color: "var(--orange)" }}>
             {testimonialsData[selected].name}
           </span>
-          (" ")-{testimonialsData[selected].status}
+          -{testimonialsData[selected].status}
         </span>
       </div>
       <div className="right-t">
-        <div></div>
-        <div></div>
+        <div className="one"></div>
+        <div className="two"></div>
         <img src={testimonialsData[selected].image} alt="" />
         <div className="Arrows">
-          <img src={leftArrow} alt="" />
-          <img src={rightArrow} alt="" />
+          <img
+            onClick={() => {
+              selected === 0
+                ? setSelected(tLength - 1)
+                : setSelected((prev) => prev - 1);
+            }}
+            src={leftArrow}
+            alt=""
+          />
+          <img
+            onClick={() => {
+              selected === tLength - 1
+                ? setSelected(0)
+                : setSelected((prev) => prev + 1);
+            }}
+            src={rightArrow}
+            alt=""
+          />
         </div>
       </div>
     </div>
