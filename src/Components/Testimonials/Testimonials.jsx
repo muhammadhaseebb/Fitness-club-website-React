@@ -2,20 +2,29 @@ import React from "react";
 import "./Testimonials.css";
 import { testimonialsData } from "../../data/testimonialsData";
 import { useState } from "react";
-
+import { motion } from "framer-motion";
 import leftArrow from "../../assets/leftArrow.png";
 import rightArrow from "../../assets/rightArrow.png";
 
 const Testimonials = () => {
   const [selected, setSelected] = useState(0);
   const tLength = testimonialsData.length;
+  const transition = { type: "spring", duration: 3 };
   return (
     <div className="testimonials">
       <div className="left-t">
         <span>Testimonials</span>
         <span>What they</span>
         <span>say about us</span>
-        <span>{testimonialsData[selected].review}</span>
+        <motion.span
+          key={selected}
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          transition={transition}
+        >
+          {testimonialsData[selected].review}
+        </motion.span>
         <span>
           <span style={{ color: "var(--orange)" }}>
             {testimonialsData[selected].name}
@@ -24,9 +33,27 @@ const Testimonials = () => {
         </span>
       </div>
       <div className="right-t">
-        <div className="one"></div>
-        <div className="two"></div>
-        <img src={testimonialsData[selected].image} alt="" />
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ ...transition, duration: 2 }}
+          className="one"
+        ></motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ ...transition, duration: 2 }}
+          className="two"
+        ></motion.div>
+        <motion.img
+          key={selected}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={transition}
+          src={testimonialsData[selected].image}
+          alt=""
+        />
         <div className="Arrows">
           <img
             onClick={() => {
